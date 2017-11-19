@@ -1,0 +1,35 @@
+.resume-list {
+  .resume-card {
+    float: left;
+    margin: 10px 10px;
+    width: 240px;
+    .resume-image img {
+      display: block;
+      cursor: pointer;
+    }
+    .resume-title {
+      margin: 10px 10px;
+      line-height: 26px;
+      height: 26px;
+      width: 220px;
+      h3 {
+        width: 170px;
+        float: left;
+        color: #999;
+      }
+      a {
+        text-align: right;
+        width: 50px;
+        float: right;
+      }
+    }
+  }
+}
+.image-view {
+  top: 24px !important;
+  .ant-modal-content {
+    .ant-modal-footer {
+      display: none;
+    }
+  }
+}

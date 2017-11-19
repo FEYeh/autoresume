@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { Button } from 'antd'
 
-class Templates extends Component {
-    render() {
-        return (
-            <div>
-                <Button type='primary'>Templates</Button>
-            </div>
-        )
+export default class Templates extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: false,
     }
+  }
+  render() {
+    return (
+      <div>
+        <Button type="primary">Templates</Button>
+      </div>
+    )
+  }
 }
-
-export default Templates;

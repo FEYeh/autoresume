@@ -1,0 +1,19 @@
+.basicInfo, .specialities, .skillsList,
+.skillsDescption, .community, .experience,
+.project, .opensource, .interests {
+  display: flex;
+  .help-button {
+    margin: 0 0 0 5px;
+  }
+}
+
+.basicInfo-help-modal, .specialities-help-modal, .skillsList-help-modal,
+.skillsDescption-help-modal, .community-help-modal, .experience-help-modal,
+.project-help-modal, .opensource-help-modal, .interests-help-modal {
+  width: 60% !important;
+  .ant-modal-content {
+    .ant-modal-footer {
+      display: none;
+    }
+  }
+}

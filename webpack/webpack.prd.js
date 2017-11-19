@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin('static/[name]-one.[hash:8].css');
 const extractSASS = new ExtractTextPlugin('static/[name]-two.[hash:8].css');
@@ -83,6 +84,14 @@ module.exports = {
             minify: true,
             sourcemap: true,
             mangle: true
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, '../data/**'),
+                to: path.resolve(__dirname, '../public')
+            }
+        ], {
+            copyUnmodified: true
         })
     ]
 }

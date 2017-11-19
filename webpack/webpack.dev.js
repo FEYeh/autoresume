@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: {
@@ -23,7 +24,6 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'latest', 'react-hmre'],
                     plugins: [
                         ["import", { libraryName: "antd", style: "css" }] //按需加载
                     ]
@@ -90,6 +90,14 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, '../data/**'),
+                to: path.resolve(__dirname, '../public')
+            }
+        ], {
+            copyUnmodified: true
         })
     ]
 }

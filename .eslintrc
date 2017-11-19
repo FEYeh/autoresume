@@ -1,10 +1,6 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
-  "excludes":[
-      "dist/*",
-      "node_modules/*"
-  ],
   "env": {
       "browser": false,
       "node": true,
@@ -22,8 +18,10 @@
       // 1 warning 警告
       // 2 error 错误
       // 默认表示airbnb默认的风格
-
-      // 禁止使用var
+      "react/jsx-filename-extension": 0,
+      "react/no-array-index-key": 0,
+      "class-methods-use-this": 1,
+      "no-console": 1,
       "no-unused-vars": 1,
       "no-var": 1,
       "no-undef": 0,

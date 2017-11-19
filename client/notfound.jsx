@@ -1,14 +1,7 @@
-import React, { Component } from 'react';
-import { Button } from 'antd'
+import React from 'react';
 
-class NotFound extends Component {
-    render() {
-        return (
-            <div>
-                404 页面未找到
-            </div>
-        )
-    }
-}
-
-export default NotFound;
+export default () => (
+  <div>
+    404 页面未找到
+  </div>
+)

@@ -3,7 +3,6 @@ body{
     transition: all 1.5s ease;
     color: #000;
     font-size: 18px;
-    text-align: center;
     h1{
         font-size: 18px;
     }
@@ -14,6 +13,7 @@ body{
 }
 
 .logo {
+    text-align: center;
     color: #fff;
     height: 32px;
     line-height: 32px;

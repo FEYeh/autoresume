@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
-    render() {
-        return (
-            <div>
-                I Love BeiJing
-            </div>
-        )
+export default class Home extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: false,
     }
+  }
+  render() {
+    return (
+      <div>
+        I Love BeiJing
+      </div>
+    )
+  }
 }
-
-export default Home;

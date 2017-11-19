@@ -1,0 +1,14 @@
+.ant-form-group{
+  .ant-form-item{
+    >div {
+        display: inline-block !important;
+        vertical-align: top !important;
+        float: none !important;
+        overflow: auto !important;
+    }
+    vertical-align: top;    
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+}
