@@ -69,7 +69,7 @@ class CreateResume extends Component {
       items: [
         {
           opts: {
-            initialValue: null,
+            initialValue: '某某某的简历',
           },
           name: 'pageTitle',
           props: {
@@ -81,6 +81,9 @@ class CreateResume extends Component {
           component: <Input placeholder="请输入页面标题" maxLength={`${MAX_PAGE_TITLE_NUM}`} />,
         },
         {
+          opts: {
+            initialValue: '某某某的简历',
+          },
           name: 'pageDescription',
           props: {
             label: '页面描述',
@@ -91,6 +94,9 @@ class CreateResume extends Component {
           component: <Input placeholder="请输入页面描述" maxLength={`${MAX_PAGE_DESCRIPTION_NUM}`} />,
         },
         {
+          opts: {
+            initialValue: '某某某',
+          },
           name: 'name',
           props: {
             label: '姓名',
@@ -101,6 +107,9 @@ class CreateResume extends Component {
           component: <Input placeholder="请输入姓名" />,
         },
         {
+          opts: {
+            initialValue: '前端开发',
+          },
           name: 'position',
           props: {
             label: '职位',
@@ -119,7 +128,7 @@ class CreateResume extends Component {
             col,
           },
           component: <div className="basicInfo">
-            <TextArea placeholder="请输入基本信息" rows={4} />
+            <TextArea placeholder="请输入基本信息" rows={10} value={BASICINFO_TEMPLATE} />
             <Tooltip title="点击显示帮助">
               <Button
                 className="help-button"
@@ -155,7 +164,18 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <TextArea placeholder="请输入个人简介" rows={4} />,
+          opts: {
+            initialValue: `目前就职于饿了么，主要负责蜂鸟商家版的开发、维护及小组管理工作，同时也负责管理物流 iOS 开发组的 GitHub 组织和维护本组的技术博客。
+
+自 2015 年开始接触 iOS 开发，至今已有 2 年时间，熟练掌握 Swift、Objective-C 代码的编写。熟悉大部分 iOS 开发与调试工具，理解 iOS App 结构与运行机制，注重代码质量与执行效率。
+
+了解常见移动 App 架构，长期使用 Swift 与 Objective-C 进行混合开发，熟悉各类常用第三方库的使用。
+
+熟悉 iOS 库的开发与发布，了解怎样利用 CocoaPods／Swift Package Manager／Cathage 进行打包与集成，业余时间热爱编写开源代码。熟悉持续集成，能够编写 Jenkins、Travis CI 等持续集成工具的配置。
+
+熟悉 Git Flow 工作流程，有较好的 Git 使用习惯。有良好的代码风格与清晰的文档结构，遵循团队开发规范。`,
+          },
+          component: <TextArea placeholder="请输入个人简介" rows={10} />,
         },
         {
           name: 'specialities',
@@ -166,7 +186,7 @@ class CreateResume extends Component {
             col,
           },
           component: <div className="specialities">
-            <TextArea placeholder="请输入技能专长" rows={4} />
+            <TextArea placeholder="请输入技能专长" rows={10} value={SPECIALITIES_TEMPLATE} />
             <Tooltip title="点击显示帮助">
               <Button
                 className="help-button"
@@ -203,7 +223,7 @@ class CreateResume extends Component {
             col,
           },
           component: <div className="skillsList">
-            <TextArea placeholder="请输入技能评价" rows={4} />
+            <TextArea placeholder="请输入技能评价" rows={10} value={SKILLSLIST_TEMPLATE} />
             <Tooltip title="点击显示帮助">
               <Button
                 className="help-button"
@@ -240,7 +260,7 @@ class CreateResume extends Component {
             col,
           },
           component: <div className="skillsDescption">
-            <TextArea placeholder="请输入能力简述" rows={4} />
+            <TextArea placeholder="请输入能力简述" rows={10} value={SKILLSDESCRIPTION_TEMPLATE} />
             <Tooltip title="点击显示帮助">
               <Button
                 className="help-button"
@@ -277,7 +297,7 @@ class CreateResume extends Component {
             col,
           },
           component: <div className="community">
-            <TextArea placeholder="请输入社区经验" rows={4} />
+            <TextArea placeholder="请输入社区经验" rows={14} value={COMMUNITY_TEMPLATE} />
             <Tooltip title="点击显示帮助">
               <Button
                 className="help-button"
@@ -314,7 +334,7 @@ class CreateResume extends Component {
             col,
           },
           component: <div className="experience">
-            <TextArea placeholder="请输入个人经验" rows={4} />
+            <TextArea placeholder="请输入个人经验" rows={10} value={EXPERIENCE_TEMPLATE} />
             <Tooltip title="点击显示帮助">
               <Button
                 className="help-button"
@@ -351,7 +371,7 @@ class CreateResume extends Component {
             col,
           },
           component: <div className="project">
-            <TextArea placeholder="请输入项目经历" rows={4} />
+            <TextArea placeholder="请输入项目经历" rows={10} value={PROJECT_TEMPLATE} />
             <Tooltip title="点击显示帮助">
               <Button
                 className="help-button"
@@ -388,7 +408,7 @@ class CreateResume extends Component {
             col,
           },
           component: <div className="opensource">
-            <TextArea placeholder="请输入开源项目" rows={4} />
+            <TextArea placeholder="请输入开源项目" rows={10} value={OPENSOURCE_TEMPLATE} />
             <Tooltip title="点击显示帮助">
               <Button
                 className="help-button"
@@ -425,7 +445,7 @@ class CreateResume extends Component {
             col,
           },
           component: <div className="interests">
-            <TextArea placeholder="请输入扩展技能" rows={4} />
+            <TextArea placeholder="请输入扩展技能" rows={10} value={INTERESTS_TEMPLATE} />
             <Tooltip title="点击显示帮助">
               <Button
                 className="help-button"
@@ -469,6 +489,12 @@ class CreateResume extends Component {
         ],
       },
     });
+  }
+  handleSubmit(_, values) {
+    console.log(values)
+    ResumeModel.createResume(values).then((res) => {
+      console.log('res', res)
+    })
   }
   render() {
     this.freshFormConfigs()
