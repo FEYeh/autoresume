@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CodeHighlight from 'code-highlight';
 import 'code-highlight/lib/style.css';
 import 'highlight.js/styles/xcode.css';
 
-import { Input, Modal, Tooltip, Cascader, Select, Row, Col, Checkbox, Button, Card } from 'antd'
+import { Input, message, Select, Row, Col, Checkbox, Button, Card } from 'antd'
 import { FormSchema, Form } from './antForm'
 import ResumeModel from '../model/resumeModel'
 import {
@@ -31,9 +30,11 @@ const { TextArea } = Input;
 class CreateResume extends Component {
   static propTypes = {
     match: PropTypes.object,
+    history: PropTypes.object,
   }
   static defaultProps = {
     match: { params: {} },
+    history: {},
   }
   constructor(props) {
     super(props)
@@ -49,6 +50,33 @@ class CreateResume extends Component {
     this.formConfigs = new FormSchema({
       layout: 'row',
       items: [
+        {
+          opts: {
+            initialValue: this.props.match.params.name,
+          },
+          name: 'templateName',
+          props: {
+            label: '模板',
+            labelCol,
+            wrapperCol,
+            col,
+          },
+          component: <Input disabled />,
+        },
+        {
+          opts: {
+            initialValue: 'FEYeh',
+          },
+          name: 'GitHubID',
+          props: {
+            label: 'GitHubID',
+            labelCol,
+            wrapperCol,
+            col,
+            style: { display: 'none' },
+          },
+          component: <Input disabled />,
+        },
         {
           opts: {
             initialValue: '某某某的简历',
@@ -183,7 +211,7 @@ class CreateResume extends Component {
           ),
         },
         {
-          name: 'skillsDescption',
+          name: 'skillsDescription',
           props: {
             label: '能力简述',
             labelCol,
@@ -320,13 +348,19 @@ class CreateResume extends Component {
     });
   }
   handleSubmit = (_, values) => {
-    const templateName = this.props.match.params.name
     const data = {
       ...values,
-      templateName,
     }
+    const { history } = this.props
     ResumeModel.createResume(data).then((res) => {
-      console.log('res', res)
+      if (res.data.status && res.data.status.code === 0) {
+        message.success('创建成功，3秒后自动跳转到我的简历库...')
+        setTimeout(() => {
+          history.push('/resumes')
+        }, 3000)
+      } else {
+        message.error('创建失败')
+      }
     })
   }
   render() {

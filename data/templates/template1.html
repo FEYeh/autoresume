@@ -7,16 +7,16 @@
     <title>{{pageTitle}}</title>
     <meta name="description" content="{{pageDescription}}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="{{basePath}}/img/favicon.png" />
-    <script type='text/javascript' src='{{basePath}}/js/vendor/modernizr.js'></script>
-    <link href="{{basePath}}/css/notices.css" type="text/css" rel="stylesheet" />
-    <link href="{{basePath}}/css/normalize.css" type="text/css" rel="stylesheet" />
-    <link href="{{basePath}}/css/foundation.css" type="text/css" rel="stylesheet" />
-    <link href="{{basePath}}/icons/foundation-icons.css" type="text/css" rel="stylesheet" />
-    <link href="{{basePath}}/css/animate.css" type="text/css" rel="stylesheet" />
-    <link href="{{basePath}}/css/pizza.css" type="text/css" rel="stylesheet" />
-    <link href="{{basePath}}/css/app.css" type="text/css" rel="stylesheet" />
-    <link href="{{basePath}}/css/print.css" rel="stylesheet" type="text/css" media="print" />
+    <link rel="icon" type="image/png" href="{{basePath}}/assets/img/favicon.png" />
+    <script type='text/javascript' src='{{basePath}}/assets/js/vendor/modernizr.js'></script>
+    <link href="{{basePath}}/assets/css/notices.css" type="text/css" rel="stylesheet" />
+    <link href="{{basePath}}/assets/css/normalize.css" type="text/css" rel="stylesheet" />
+    <link href="{{basePath}}/assets/css/foundation.css" type="text/css" rel="stylesheet" />
+    <link href="{{basePath}}/assets/icons/foundation-icons.css" type="text/css" rel="stylesheet" />
+    <link href="{{basePath}}/assets/css/animate.css" type="text/css" rel="stylesheet" />
+    <link href="{{basePath}}/assets/css/pizza.css" type="text/css" rel="stylesheet" />
+    <link href="{{basePath}}/assets/css/app.css" type="text/css" rel="stylesheet" />
+    <link href="{{basePath}}/assets/css/print.css" rel="stylesheet" type="text/css" media="print" />
 </head>
 
 <body>
@@ -61,7 +61,7 @@
                 <h4 class="title"><i class="fi-social-github"></i> 社区经验</h4>
                 <div class="community">
                     <p>Github：
-                        <a href="https://github.com/%GitHubID%"><img src="http://ghchart.rshah.org/%GitHubID%" alt="Github Chart of %GitHubID%" /></a></p>
+                        <a href="https://github.com/{{GitHubID}}"><img src="http://ghchart.rshah.org/{{GitHubID}}" alt="Github Chart of {{GitHubID}}" /></a></p>
                     <hr />
                     <table>
                         <thead>
@@ -95,7 +95,7 @@
             <div class="avoid_pagebreak animated fadeInUp">
                 <h4 class="title"><i class="fi-book"></i> 开源项目</h4>
                 <div class="row recognitions">
-                    {{{openSource}}}
+                    {{{opensource}}}
                 </div>
             </div>
             <div class="avoid_pagebreak animated fadeInUp">
@@ -113,10 +113,10 @@
                 <a href="https://github.com/EyreFree/EFResume">EFResume</a></p>
         </div>
     </div>
-    <script src="{{basePath}}/js/jquery-2.x.min.js" type="text/javascript"></script>
-    <script src="{{basePath}}/js/foundation.min.js" type="text/javascript"></script>
-    <script src="{{basePath}}/js/vendor/snap.svg.js" type="text/javascript"></script>
-    <script src="{{basePath}}/js/pizza.js" type="text/javascript"></script>
+    <script src="{{basePath}}/assets/js/jquery-2.x.min.js" type="text/javascript"></script>
+    <script src="{{basePath}}/assets/js/foundation.min.js" type="text/javascript"></script>
+    <script src="{{basePath}}/assets/js/vendor/snap.svg.js" type="text/javascript"></script>
+    <script src="{{basePath}}/assets/js/pizza.js" type="text/javascript"></script>
     <script type="text/javascript">
     Pizza.init(document.body, {
         donut: true,

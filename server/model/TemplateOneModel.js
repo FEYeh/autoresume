@@ -1,4 +1,5 @@
 module.exports = (data) => {
+  this.GitHubID = data.GitHubID || 'FEYeh'
   this.templateName = data.templateName;
   this.pageTitle = data.pageTitle;
   this.pageDescription = data.pageDescription;
@@ -8,7 +9,7 @@ module.exports = (data) => {
   this.personalInfo = data.personalInfo;
   this.specialities = data.specialities;
   this.skillsList = data.skillsList;
-  this.skillsDescption = data.skillsDescption;
+  this.skillsDescription = data.skillsDescription;
   this.community = data.community;
   this.experience = data.experience;
   this.project = data.project;
@@ -17,7 +18,7 @@ module.exports = (data) => {
 
   this.fillBasicInfo = () => {
     try {
-      console.log('this.basicInfo', this.basicInfo)
+      // console.log('this.basicInfo', this.basicInfo)
       const basicInfoJsonObj = JSON.parse(this.basicInfo)
       if (basicInfoJsonObj && basicInfoJsonObj.length > 0) {
         let content = ''
@@ -53,7 +54,7 @@ module.exports = (data) => {
 
   this.fillSpecialities = () => {
     try {
-      console.log('this.specialities', this.specialities)
+      // console.log('this.specialities', this.specialities)
       const specialitiesJsonObj = JSON.parse(this.specialities)
       if (specialitiesJsonObj && specialitiesJsonObj.length > 0) {
         let content = ''
@@ -82,7 +83,7 @@ module.exports = (data) => {
 
   this.fillSkillsList = () => {
     try {
-      console.log('this.skillsList', this.skillsList)
+      // console.log('this.skillsList', this.skillsList)
       const skillsListJsonObj = JSON.parse(this.skillsList)
       if (skillsListJsonObj && skillsListJsonObj.length > 0) {
         let content = ''
@@ -95,11 +96,11 @@ module.exports = (data) => {
             `<ul class="small-block-grid-2">
               <li class="name">${item.name}</li>
               <li>
-              <ul class="small-block-grid-8 ellipses">
-                ${roundHtml}
-              </ul>
+                <ul class="small-block-grid-8 ellipses">
+                  ${roundHtml}
+                </ul>
               </li>
-            </ul>"`
+            </ul>`
           )
         })
         this.skillsList = content
@@ -113,7 +114,7 @@ module.exports = (data) => {
 
   this.fillSkillsDescription = () => {
     try {
-      console.log('this.skillsDescription', this.skillsDescription)
+      // console.log('this.skillsDescription', this.skillsDescription)
       const skillsDescriptionJsonObj = JSON.parse(this.skillsDescription)
       if (skillsDescriptionJsonObj && skillsDescriptionJsonObj.length > 0) {
         let content = ''
@@ -133,15 +134,15 @@ module.exports = (data) => {
 
   this.fillCommunity = () => {
     try {
-      console.log('this.community', this.community)
+      // console.log('this.community', this.community)
       const communityJsonObj = JSON.parse(this.community)
       if (communityJsonObj && communityJsonObj.length > 0) {
         let content = ''
         communityJsonObj.forEach((item) => {
           content += (
             `<tr>
-            <td>${item.title}</td>" +
-            <td>${item.content}</td>" +
+            <td>${item.title}</td>
+            <td>${item.content}</td>
         </tr>`
           )
         })
@@ -156,7 +157,7 @@ module.exports = (data) => {
 
   this.fillExperience = () => {
     try {
-      console.log('this.experience', this.experience)
+      // console.log('this.experience', this.experience)
       const experienceJsonObj = JSON.parse(this.experience)
       if (experienceJsonObj && experienceJsonObj.length > 0) {
         let content = ''
@@ -188,7 +189,7 @@ module.exports = (data) => {
 
   this.fillProject = () => {
     try {
-      console.log('this.project', this.project)
+      // console.log('this.project', this.project)
       const projectJsonObj = JSON.parse(this.project)
       if (projectJsonObj && projectJsonObj.length > 0) {
         let content = ''
@@ -223,7 +224,7 @@ module.exports = (data) => {
 
   this.fillOpensource = () => {
     try {
-      console.log('this.opensource', this.opensource)
+      // console.log('this.opensource', this.opensource)
       const opensourceJsonObj = JSON.parse(this.opensource)
       if (opensourceJsonObj && opensourceJsonObj.length > 0) {
         let content = ''
@@ -232,7 +233,7 @@ module.exports = (data) => {
           `<div class="large-12 small-12 columns animated fadeIn">
             <div class="row">
             <div class="large-3 medium-3 small-4 columns">
-            <div class="category">${item.name}</div><img src="img/ribbon.svg" width="100" height="131" alt="${item.title}" class="ribbon"></div>
+            <div class="category">${item.name}</div><img src="/assets/img/ribbon.svg" width="100" height="131" alt="${item.title}" class="ribbon"></div>
             <div class="large-9 medium-9 small-8 columns">
             <div class="recog_data">
             <div class="title"><a href='${item.link}'>${item.title}</a></div>
@@ -253,17 +254,17 @@ module.exports = (data) => {
 
   this.fillInterests = () => {
     try {
-      console.log('this.interests', this.interests)
+      // console.log('this.interests', this.interests)
       const interestsJsonObj = JSON.parse(this.interests)
       if (interestsJsonObj && interestsJsonObj.length > 0) {
         let content = ''
         interestsJsonObj.forEach((item) => {
           content +=
           `<div class="large-3 small-6 medium-3 columns animated bounceIn">
-          <div class="int_icon"><i class="${item.icon}"></i>
-          <div class="activity">${item.name}</div>
-          </div>
-      </div>`
+            <div class="int_icon"><i class="${item.icon}"></i>
+            <div class="activity">${item.name}</div>
+            </div>
+          </div>`
         })
         this.interests = content
       } else {

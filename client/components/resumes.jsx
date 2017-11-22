@@ -15,11 +15,11 @@ class Resumes extends Component {
     }
   }
   componentDidMount() {
-    this.loadTemplates()
+    this.loadResmues()
   }
-  loadTemplates() {
+  loadResmues() {
     this.setState({ loading: true })
-    ResumeModel.getTemplates().then((res) => {
+    ResumeModel.getResumes().then((res) => {
       let data = { loading: false }
       if (res.data.status && res.data.status.code === 0) {
         data = {
@@ -32,22 +32,6 @@ class Resumes extends Component {
       this.setState(data)
     })
   }
-  showImage = (e) => {
-    const alt = e.target ? e.target.alt : ''
-    const src = e.target ? e.target.src : ''
-    this.setState({
-      imageVisible: true,
-      currentImage: {
-        alt,
-        src,
-      },
-    })
-  }
-  hideImage = () => {
-    this.setState({
-      imageVisible: false,
-    });
-  }
   renderResumeList() {
     const { resumes } = this.state
     return (
@@ -56,14 +40,11 @@ class Resumes extends Component {
         : (
           <div className="resume-list">
             {
-              resumes.map((r, idx) => (
-                <Card key={`${r.name}-${idx}`} className="resume-card" bodyStyle={{ padding: 0 }}>
-                  <div className="resume-image">
-                    <img alt={r.name} width="100%" src={r.image} onClick={this.showImage} />
-                  </div>
+              resumes.map((name, idx) => (
+                <Card key={`${name}-${idx}`} className="resume-card" bodyStyle={{ padding: 0 }}>
                   <div className="resume-title">
-                    <h3>{r.name}</h3>
-                    <Link to={`/resumes/create/${r.name}`}>Create</Link>
+                    <h3>{name}</h3>
+                    <a target="__blank" href={`${window.location.protocol}//${window.location.host}/data/resumes/${name}.html`}>Goto</a>
                   </div>
                 </Card>
               ))
@@ -74,7 +55,7 @@ class Resumes extends Component {
   }
   render() {
     return (
-      <Card title="Resume Store" bordered={false} loading={this.state.loading}>
+      <Card title="My Resumes" bordered={false} loading={this.state.loading}>
         {this.renderResumeList()}
         <Modal
           className="image-view"

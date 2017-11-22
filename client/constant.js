@@ -160,7 +160,7 @@ export const PROJECT_TEMPLATE = `[
 
 export const OPENSOURCE_TEMPLATE = `[
   {
-    "name": "AutoResume",
+    "name": "AR",
     "title": "AutoResume",
     "description": "AutoResume 是一个简历模板网站，用 React 开发，受 EFResume 启发，因为 zresume 是基于静态页面的，对于用户来说不够友好、灵活，因此做了AutoResume，😂。设计稿来源于 FREE Resume Template。欢迎大家提 Issue 和 PR，希望能和大家一起改进这份简历，然后好用的话望大佬们赏个 Star，🙏，有问题可以来撩我。",
     "link": "https://github.com/FEYeh/autoresume"
