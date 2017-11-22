@@ -22,6 +22,8 @@ import {
 } from '../constant'
 import './createResume.scss'
 
+import CustomTextArea from './customTextArea'
+
 const Option = Select.Option;
 const { TextArea } = Input;
 
@@ -39,26 +41,6 @@ class CreateResume extends Component {
       resume: [],
       loading: false,
     }
-  }
-  componentDidMount() {
-    const templateName = this.props.match.params.name
-    this.getTemplate(templateName)
-  }
-  getTemplate(templateName) {
-    console.log('templateName', templateName)
-  }
-  hideHelp = () => {
-    this.setState({
-      basicInfoVisible: false,
-      specialitiesVisible: false,
-      skillsListVisible: false,
-      skillsDescptionVisible: false,
-      communityVisible: false,
-      experienceVisible: false,
-      projectVisible: false,
-      opensourceVisible: false,
-      interestsVisible: false,
-    })
   }
   freshFormConfigs() {
     const labelCol = { span: 5 };
@@ -127,34 +109,17 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <div className="basicInfo">
-            <TextArea placeholder="请输入基本信息" rows={10} value={BASICINFO_TEMPLATE} />
-            <Tooltip title="点击显示帮助">
-              <Button
-                className="help-button"
-                shape="circle"
-                icon="question"
-                onClick={() => {
-                  this.setState({
-                    basicInfoVisible: true,
-                  })
-                }}
-              />
-            </Tooltip>
-            <Modal
-              className="basicInfo-help-modal"
+          opts: {
+            initialValue: BASICINFO_TEMPLATE,
+          },
+          component: (
+            <CustomTextArea
               title="基本信息模板"
-              visible={this.state.basicInfoVisible}
-              onCancel={this.hideHelp}
-            >
-              <CodeHighlight
-                language="javascript"
-                description="请参考本模板填写基本信息"
-              >
-                {BASICINFO_TEMPLATE}
-              </CodeHighlight>
-            </Modal>
-          </div>,
+              placeholder="请输入基本信息"
+              description="请参考本模板填写基本信息"
+              template={BASICINFO_TEMPLATE}
+            />
+          ),
         },
         {
           name: 'personalInfo',
@@ -185,34 +150,17 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <div className="specialities">
-            <TextArea placeholder="请输入技能专长" rows={10} value={SPECIALITIES_TEMPLATE} />
-            <Tooltip title="点击显示帮助">
-              <Button
-                className="help-button"
-                shape="circle"
-                icon="question"
-                onClick={() => {
-                  this.setState({
-                    specialitiesVisible: true,
-                  })
-                }}
-              />
-            </Tooltip>
-            <Modal
-              className="specialities-help-modal"
+          opts: {
+            initialValue: SPECIALITIES_TEMPLATE,
+          },
+          component: (
+            <CustomTextArea
               title="技能专长模板"
-              visible={this.state.specialitiesVisible}
-              onCancel={this.hideHelp}
-            >
-              <CodeHighlight
-                language="javascript"
-                description="请参考本模板填写技能专长"
-              >
-                {SPECIALITIES_TEMPLATE}
-              </CodeHighlight>
-            </Modal>
-          </div>,
+              placeholder="请输入技能专长"
+              description="请参考本模板填写技能专长"
+              template={SPECIALITIES_TEMPLATE}
+            />
+          ),
         },
         {
           name: 'skillsList',
@@ -222,34 +170,17 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <div className="skillsList">
-            <TextArea placeholder="请输入技能评价" rows={10} value={SKILLSLIST_TEMPLATE} />
-            <Tooltip title="点击显示帮助">
-              <Button
-                className="help-button"
-                shape="circle"
-                icon="question"
-                onClick={() => {
-                  this.setState({
-                    skillsListVisible: true,
-                  })
-                }}
-              />
-            </Tooltip>
-            <Modal
-              className="skillsList-help-modal"
+          opts: {
+            initialValue: SKILLSLIST_TEMPLATE,
+          },
+          component: (
+            <CustomTextArea
               title="技能评价模板"
-              visible={this.state.skillsListVisible}
-              onCancel={this.hideHelp}
-            >
-              <CodeHighlight
-                language="javascript"
-                description="请参考本模板填写技能评价"
-              >
-                {SKILLSLIST_TEMPLATE}
-              </CodeHighlight>
-            </Modal>
-          </div>,
+              placeholder="请输入技能评价"
+              description="请参考本模板填写技能评价"
+              template={SKILLSLIST_TEMPLATE}
+            />
+          ),
         },
         {
           name: 'skillsDescption',
@@ -259,34 +190,17 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <div className="skillsDescption">
-            <TextArea placeholder="请输入能力简述" rows={10} value={SKILLSDESCRIPTION_TEMPLATE} />
-            <Tooltip title="点击显示帮助">
-              <Button
-                className="help-button"
-                shape="circle"
-                icon="question"
-                onClick={() => {
-                  this.setState({
-                    skillsDescptionVisible: true,
-                  })
-                }}
-              />
-            </Tooltip>
-            <Modal
-              className="skillsDescption-help-modal"
+          opts: {
+            initialValue: SKILLSDESCRIPTION_TEMPLATE,
+          },
+          component: (
+            <CustomTextArea
               title="能力简述模板"
-              visible={this.state.skillsDescptionVisible}
-              onCancel={this.hideHelp}
-            >
-              <CodeHighlight
-                language="javascript"
-                description="请参考本模板填写能力简述"
-              >
-                {SKILLSDESCRIPTION_TEMPLATE}
-              </CodeHighlight>
-            </Modal>
-          </div>,
+              placeholder="请输入能力简述"
+              description="请参考本模板填写能力简述"
+              template={SKILLSDESCRIPTION_TEMPLATE}
+            />
+          ),
         },
         {
           name: 'community',
@@ -296,34 +210,17 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <div className="community">
-            <TextArea placeholder="请输入社区经验" rows={14} value={COMMUNITY_TEMPLATE} />
-            <Tooltip title="点击显示帮助">
-              <Button
-                className="help-button"
-                shape="circle"
-                icon="question"
-                onClick={() => {
-                  this.setState({
-                    communityVisible: true,
-                  })
-                }}
-              />
-            </Tooltip>
-            <Modal
-              className="community-help-modal"
+          opts: {
+            initialValue: COMMUNITY_TEMPLATE,
+          },
+          component: (
+            <CustomTextArea
               title="社区经验模板"
-              visible={this.state.communityVisible}
-              onCancel={this.hideHelp}
-            >
-              <CodeHighlight
-                language="javascript"
-                description="请参考本模板填写社区经验"
-              >
-                {COMMUNITY_TEMPLATE}
-              </CodeHighlight>
-            </Modal>
-          </div>,
+              placeholder="请输入社区经验"
+              description="请参考本模板填写社区经验"
+              template={COMMUNITY_TEMPLATE}
+            />
+          ),
         },
         {
           name: 'experience',
@@ -333,34 +230,17 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <div className="experience">
-            <TextArea placeholder="请输入个人经验" rows={10} value={EXPERIENCE_TEMPLATE} />
-            <Tooltip title="点击显示帮助">
-              <Button
-                className="help-button"
-                shape="circle"
-                icon="question"
-                onClick={() => {
-                  this.setState({
-                    experienceVisible: true,
-                  })
-                }}
-              />
-            </Tooltip>
-            <Modal
-              className="experience-help-modal"
+          opts: {
+            initialValue: EXPERIENCE_TEMPLATE,
+          },
+          component: (
+            <CustomTextArea
               title="个人经验模板"
-              visible={this.state.experienceVisible}
-              onCancel={this.hideHelp}
-            >
-              <CodeHighlight
-                language="javascript"
-                description="请参考本模板填写个人经验"
-              >
-                {EXPERIENCE_TEMPLATE}
-              </CodeHighlight>
-            </Modal>
-          </div>,
+              placeholder="请输入个人经验"
+              description="请参考本模板填写个人经验"
+              template={EXPERIENCE_TEMPLATE}
+            />
+          ),
         },
         {
           name: 'project',
@@ -370,34 +250,17 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <div className="project">
-            <TextArea placeholder="请输入项目经历" rows={10} value={PROJECT_TEMPLATE} />
-            <Tooltip title="点击显示帮助">
-              <Button
-                className="help-button"
-                shape="circle"
-                icon="question"
-                onClick={() => {
-                  this.setState({
-                    projectVisible: true,
-                  })
-                }}
-              />
-            </Tooltip>
-            <Modal
-              className="project-help-modal"
-              title="项目经历"
-              visible={this.state.projectVisible}
-              onCancel={this.hideHelp}
-            >
-              <CodeHighlight
-                language="javascript"
-                description="请参考本模板填写项目经历"
-              >
-                {PROJECT_TEMPLATE}
-              </CodeHighlight>
-            </Modal>
-          </div>,
+          opts: {
+            initialValue: PROJECT_TEMPLATE,
+          },
+          component: (
+            <CustomTextArea
+              title="项目经历模板"
+              placeholder="请输入项目经历"
+              description="请参考本模板填写项目经历"
+              template={PROJECT_TEMPLATE}
+            />
+          ),
         },
         {
           name: 'opensource',
@@ -407,34 +270,17 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <div className="opensource">
-            <TextArea placeholder="请输入开源项目" rows={10} value={OPENSOURCE_TEMPLATE} />
-            <Tooltip title="点击显示帮助">
-              <Button
-                className="help-button"
-                shape="circle"
-                icon="question"
-                onClick={() => {
-                  this.setState({
-                    opensourceVisible: true,
-                  })
-                }}
-              />
-            </Tooltip>
-            <Modal
-              className="opensource-help-modal"
-              title="开源项目"
-              visible={this.state.opensourceVisible}
-              onCancel={this.hideHelp}
-            >
-              <CodeHighlight
-                language="javascript"
-                description="请参考本模板填写开源项目"
-              >
-                {OPENSOURCE_TEMPLATE}
-              </CodeHighlight>
-            </Modal>
-          </div>,
+          opts: {
+            initialValue: OPENSOURCE_TEMPLATE,
+          },
+          component: (
+            <CustomTextArea
+              title="开源项目模板"
+              placeholder="请输入开源项目"
+              description="请参考本模板填写开源项目"
+              template={OPENSOURCE_TEMPLATE}
+            />
+          ),
         },
         {
           name: 'interests',
@@ -444,34 +290,17 @@ class CreateResume extends Component {
             wrapperCol,
             col,
           },
-          component: <div className="interests">
-            <TextArea placeholder="请输入扩展技能" rows={10} value={INTERESTS_TEMPLATE} />
-            <Tooltip title="点击显示帮助">
-              <Button
-                className="help-button"
-                shape="circle"
-                icon="question"
-                onClick={() => {
-                  this.setState({
-                    interestsVisible: true,
-                  })
-                }}
-              />
-            </Tooltip>
-            <Modal
-              className="interests-help-modal"
-              title="扩展技能"
-              visible={this.state.interestsVisible}
-              onCancel={this.hideHelp}
-            >
-              <CodeHighlight
-                language="javascript"
-                description="请参考本模板填写扩展技能"
-              >
-                {INTERESTS_TEMPLATE}
-              </CodeHighlight>
-            </Modal>
-          </div>,
+          opts: {
+            initialValue: INTERESTS_TEMPLATE,
+          },
+          component: (
+            <CustomTextArea
+              title="扩展技能模板"
+              placeholder="请输入扩展技能"
+              description="请参考本模板填写扩展技能"
+              template={INTERESTS_TEMPLATE}
+            />
+          ),
         },
       ],
       buttons: {
@@ -490,9 +319,13 @@ class CreateResume extends Component {
       },
     });
   }
-  handleSubmit(_, values) {
-    console.log(values)
-    ResumeModel.createResume(values).then((res) => {
+  handleSubmit = (_, values) => {
+    const templateName = this.props.match.params.name
+    const data = {
+      ...values,
+      templateName,
+    }
+    ResumeModel.createResume(data).then((res) => {
       console.log('res', res)
     })
   }

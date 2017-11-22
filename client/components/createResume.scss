@@ -1,4 +1,4 @@
-.basicInfo, .specialities, .skillsList,
+.custom-textarea, .basicInfo, .specialities, .skillsList,
 .skillsDescption, .community, .experience,
 .project, .opensource, .interests {
   display: flex;
@@ -7,7 +7,7 @@
   }
 }
 
-.basicInfo-help-modal, .specialities-help-modal, .skillsList-help-modal,
+.help-modal, .basicInfo-help-modal, .specialities-help-modal, .skillsList-help-modal,
 .skillsDescption-help-modal, .community-help-modal, .experience-help-modal,
 .project-help-modal, .opensource-help-modal, .interests-help-modal {
   width: 60% !important;

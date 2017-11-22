@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars')
+const TemplateOneModel = require('../model/TemplateOneModel')
 
 const readJsonFile = fPath => new Promise((resolve, reject) => {
   fs.readFile(fPath, 'utf8', (err, data) => {
@@ -15,6 +16,16 @@ const readJsonFile = fPath => new Promise((resolve, reject) => {
         console.log('json parse error:', e)
         reject(e);
       }
+    }
+  });
+})
+
+const readFile = fPath => new Promise((resolve, reject) => {
+  fs.readFile(fPath, 'utf8', (err, data) => {
+    if (err) {
+      reject(err);
+    } else {
+      resolve(data)
     }
   });
 })
@@ -38,14 +49,16 @@ const getTemplates = async (ctx) => {
 
 const createResume = async (ctx) => {
   const templateFile = path.resolve(__dirname, '../../public/data/templates/template1.html')
-  const source = '';
+  const source = await readFile(templateFile);
   const template = Handlebars.compile(source);
 
-  // const result = template(data);
-  console.log('ctx', ctx.request.body)
+  const model = TemplateOneModel(ctx.request.body)
+  const ds = model.fillData()
+  const result = template(ds);
+  console.log('result', model, ds, result)
   ctx.response.body = {
     status: { code: 0, msg: 'success' },
-    data: { ...ctx.request.body },
+    data: { html: result },
   }
 }
 
