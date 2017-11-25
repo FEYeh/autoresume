@@ -1,7 +1,7 @@
 # AutoResume
 
 <p align="center">
-  <img alt="AutoResume" src="https://github.com/FEYeh/autoresume/tree/master/client/asset/image/AutoResume.gif" width="100%">
+  <img alt="AutoResume" src="./client/asset/image/AutoResume.gif" width="100%">
 </p>
 
 AutoResume 是一个简历模板网站，用 React + NodeJS 进行开发，受 [EFResume](https://github.com/EyreFree/EFResume)及[zresume](https://github.com/izuolan/zresume) 启发，将其改成网站版，😂。设计稿来源于 [FREE Resume Template](https://www.behance.net/gallery/15677411/FREE-Resume-Template)。初版比较简陋，欢迎大家提 Issue 和 PR，希望能和大家一起改进这份简历，然后好用的话望大佬们赏个 Star，🙏，有问题可以来撩我。
@@ -9,8 +9,9 @@ AutoResume 是一个简历模板网站，用 React + NodeJS 进行开发，受 [
 
 ## 预览
 
-![Beautiful Resume Template](https://github.com/FEYeh/autoresume/tree/master/public/templates/template1.jpg)
-
+<p align="center">
+  <img alt="Beautiful Resume Template" src="./public/templates/template1.jpg" width="100%">
+</p>
 ## 示例
 
 [https://github.com/FEYeh/autoresume](https://github.com/FEYeh/autoresume)
