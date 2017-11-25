@@ -10,7 +10,7 @@ AutoResume 是一个简历模板网站，用 React + NodeJS 进行开发，受 [
 ## 预览
 
 <p align="center">
-  <img alt="Beautiful Resume Template" src="./public/templates/template1.jpg" width="100%">
+  <img alt="Beautiful Resume Template" src="./public/data/templates/template1.jpg" width="100%">
 </p>
 ## 示例
 
