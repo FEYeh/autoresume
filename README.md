@@ -15,7 +15,7 @@ AutoResume 是一个简历模板网站，用 React + NodeJS 进行开发，受 [
 
 ## 示例
 
-[https://github.com/FEYeh/autoresume](https://github.com/FEYeh/autoresume)
+[AutoResume](https://feyeh.github.io/AutoResume/resume1.html)
 
 ## 环境
 
