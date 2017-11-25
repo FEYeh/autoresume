@@ -101,7 +101,7 @@ module.exports = {
       },
       {
         from: path.resolve(__dirname, '../assets/**'),
-        to: path.resolve(__dirname, '../public'),
+        to: path.resolve(__dirname, '../public/data/resumes'),
       },
     ], {
       copyUnmodified: true,

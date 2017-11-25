@@ -1,4 +1,5 @@
 module.exports = (data) => {
+  this.basePath = data.basePath
   this.GitHubID = data.GitHubID || 'FEYeh'
   this.templateName = data.templateName;
   this.pageTitle = data.pageTitle;
@@ -287,6 +288,7 @@ module.exports = (data) => {
     this.fillInterests()
 
     return {
+      basePath: this.basePath,
       templateName: this.templateName,
       pageTitle: this.pageTitle,
       pageDescription: this.pageDescription,

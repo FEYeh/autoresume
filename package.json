@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "antd": "^2.13.10",
+    "archiver": "^2.1.0",
     "axios": "^0.17.1",
     "code-highlight": "^1.0.0",
     "handlebars": "^4.0.11",

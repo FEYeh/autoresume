@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const Handlebars = require('handlebars')
 const TemplateOneModel = require('../model/TemplateOneModel')
+const Achiver = require('../helper/achivehelper')
 
 const readJsonFile = fPath => new Promise((resolve, reject) => {
   fs.readFile(fPath, 'utf8', (err, data) => {
@@ -13,7 +14,6 @@ const readJsonFile = fPath => new Promise((resolve, reject) => {
         resolve(templateJson)
       } catch (e) {
         // eslint-disable-next-line
-        console.log('json parse error:', e)
         reject(e)
       }
     }
@@ -33,29 +33,6 @@ const readFile = fPath => new Promise((resolve, reject) => {
 const writeFile = (fPath, data) => new Promise((resolve, reject) => {
   fs.writeFile(fPath, data, 'utf8', (err) => {
     if (err) {
-      console.log('write file error:', err)
-      resolve(false)
-    } else {
-      resolve(true)
-    }
-  });
-})
-
-const exists = fPath => new Promise((resolve, reject) => {
-  fs.exists(fPath, (e) => {
-    if (e) {
-      resolve(true)
-    } else {
-      console.log('file no exists')
-      resolve(false)
-    }
-  });
-})
-
-const mkdir = fPath => new Promise((resolve, reject) => {
-  fs.mkdir(fPath, (err) => {
-    if (err) {
-      console.log('mkdir error:', err)
       resolve(false)
     } else {
       resolve(true)
@@ -115,20 +92,33 @@ const createResume = async (ctx) => {
   const source = await readFile(templateFile);
   const template = Handlebars.compile(source);
 
-  const originData = { ...ctx.request.body }
-  const model = TemplateOneModel(ctx.request.body)
+  const originData = { ...ctx.request.body, basePath: '.' }
+  const model = TemplateOneModel(originData)
   try {
     const ds = model.fillData()
     const result = template(ds);
     let writeRes = writeFile(templateDataFile, JSON.stringify(originData))
     if (!writeRes) {
-      console.log('写入json文件失败')
+      ctx.response.body = {
+        status: { code: 1000, msg: '服务异常' },
+      }
+      return
     }
-    console.log('JSON.stringify(result)', result)
     writeRes = writeFile(templateHtmlFile, result)
     if (!writeRes) {
-      console.log('写入html文件失败')
+      ctx.response.body = {
+        status: { code: 1000, msg: '服务异常' },
+      }
+      return
     }
+
+    const data = {
+      assets: '../../public/data/resumes/assets',
+      html: '../../public/data/resumes/resume1.html',
+      htmlName: 'resume1.html',
+      zipPath: '../../public/data/resumes/EFResume.zip',
+    }
+    Achiver(data)
     ctx.response.body = {
       status: { code: 0, msg: 'success' },
     }
