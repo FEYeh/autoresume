@@ -116,7 +116,7 @@ const createResume = async (ctx) => {
       assets: '../../public/data/resumes/assets',
       html: '../../public/data/resumes/resume1.html',
       htmlName: 'resume1.html',
-      zipPath: '../../public/data/resumes/EFResume.zip',
+      zipPath: '../../public/data/resumes/AutoResume.zip',
     }
     Achiver(data)
     ctx.response.body = {
